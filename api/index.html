@@ -38,11 +38,11 @@
                 $.ajax({
                     type: api.reqtype,
                     url: api.url,
-                    // data: api.data,
+                    data: api.data,
                     success: function(data) {
                         document.getElementById("result").innerHTML = "<hr /><h3>Result</h3>"+data;
-                    }
-                    // dataType: api.datatype
+                    },
+                    dataType: api.datatype
                 });
             });
         </script>
