@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+
+        <input type="text" placeholder="get or post" name="reqtype" id="reqtype">
+        <br />
+        <input type="text" placeholder="request URL" name="requrl" id="requrl">
+        <br />
+        <textarea placeholder="request's body/data" name="reqdata" id="reqdata"></textarea>
+        <br />
+        <textarea placeholder="request success function" name="reqsuccess" id="reqsuccess"></textarea>
+        <br />
+        <input placeholder="request data type" name="reqdatatype" id="reqdatatype">
+        <br />
+        <button id="apisend">send request</button>
+        
+        <div id="result"></div>
+
+        <script>
+            
+            $("#apisend").click(function() {
+                var api = {
+                    reqtype: $('#reqtype').val().toLowerCase(),
+                    url: $('#requrl').val(),
+                    data: $('#reqdata').val(),
+                    success: $('#reqsuccess').val(),
+                    datatype: $('#reqdatatype').val()
+                }
+                console.log(api);
+                $.ajax({
+                    type: api.reqtype,
+                    url: api.url,
+                    // data: api.data,
+                    success: function(data) {
+                        document.getElementById("result").innerHTML = "<hr /><h3>Result</h3>"+data;
+                    }
+                    // dataType: api.datatype
+                });
+            });
+        </script>
+    </body>
+</html>
