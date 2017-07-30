@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>MNCtool unit converter</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+
+        <h1>MNCtool unit converter <small style="font-size:30%;">powered by Munucial</small></h1>
+        <hr />
+
+        <input type="text" id="ori" placeholder="eg. USD, EUR">
+        <br />
+        <input type="text" id="conv" placeholder="eg. USD, EUR">
+        <br />
+        <button id="convertvalue">Convert</button>
+
+        <script>
+            $("#convertvalue").click(function() {
+                var api = {
+                    url: "http://apilayer.net/api/live?access_key=1907a0fc293028c80b0528b3afb58002"+"&currencies="+$('#ori').val()+","+$('#conv').val();
+                }
+                $.ajax({
+                    type: "get",
+                    url: api.url,
+                    success: function(data) {
+                        if (data.success == true) {
+                            var ori = data.quotes["USD"+api.ori];
+                            var conv = data.quotes["USD"+api.conv];
+                            var amount = api.amount;
+                            var result = amount/ori*conv;
+                            document.getElementById("result").innerHTML = "<hr /><h1>Response:</h1>"+api.amount+api.ori+" is equal to "+result+api.conv;
+                        } else {
+                            document.getElementById("result").innerHTML = "<hr /><h1>Response:</h1>"+"server no response";
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
