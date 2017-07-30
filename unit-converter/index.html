@@ -14,12 +14,17 @@
         <br />
         <p>to: </p><input type="text" id="conv" placeholder="eg. USD, EUR">
         <br />
+        <p>Amount: </p><input type="text" id="amount" placeholder="eg. 10, 9.99">
+        <br />
         <button id="convertvalue">Convert</button>
 
         <script>
             $("#convertvalue").click(function() {
                 var api = {
-                    url: "http://apilayer.net/api/live?access_key=1907a0fc293028c80b0528b3afb58002"+"&currencies="+$('#ori').val()+","+$('#conv').val()
+                    url: "http://apilayer.net/api/live?access_key=1907a0fc293028c80b0528b3afb58002"+"&currencies="+$('#ori').val()+","+$('#conv').val(),
+                    ori: $('#ori').val(),
+                    conv: $("#conv").val(),
+                    amount: $("#amount").val()
                 }
                 $.ajax({
                     type: "get",
