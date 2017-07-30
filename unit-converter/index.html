@@ -37,7 +37,7 @@
                             var conv = data.quotes["USD"+api.conv];
                             var amount = api.amount;
                             var result = amount/ori*conv;
-                            document.getElementById("result").innerHTML = "<hr /><h1>Response:</h1>"+api.amount+api.ori+" is equal to "+result+api.conv;
+                            document.getElementById("result").innerHTML = "<hr /><h1>Response:</h1>"+api.amount+" "+api.ori+" is equal to "+result++" "api.conv;
                         } else {
                             document.getElementById("result").innerHTML = "<hr /><h1>Response:</h1>"+"server no response";
                         }
